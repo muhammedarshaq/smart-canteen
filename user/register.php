@@ -23,7 +23,6 @@ class CustomerRegistration
         $stmt->bind_param("ssss", $name, $email, $phone, $password);
 
         if ($stmt->execute()) {
-            session_start();
             $_SESSION['email'] = $email;
             header("Location: home.php");
             return true;
@@ -55,67 +54,107 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Registration</title>
-    <link rel="stylesheet" href="../styles.css">
     <style>
-        .registration-container {
+        /* Body and Container Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #8974FF, #FF7BFB);
+        }
+
+        .container {
+            background: white;
+            width: 90%;
             max-width: 400px;
-            margin: 50px auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
             padding: 20px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
         }
 
         h2 {
-            text-align: center;
+            font-size: 1.8rem;
             color: #333;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         input {
-            width: 100%;
-            padding: 12px;
-            margin: 8px 0;
+            width: 80%;
+            padding: 10px;
+            margin: 10px auto;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 4px;
+            display: block;
             box-sizing: border-box;
         }
 
         button {
-            width: 100%;
-            padding: 12px;
-            background: #4CAF50;
+            background-color: #9fa0f4;
             color: white;
             border: none;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 8px;
             cursor: pointer;
-            margin-top: 10px;
-            font-size: 16px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
         }
 
         button:hover {
-            background: #45a049;
+            background-color: #7f79e0;
         }
 
         a {
             display: block;
-            text-align: center;
             margin-top: 15px;
-            color: #666;
+            color: #8974FF;
             text-decoration: none;
+            font-size: 0.9rem;
         }
 
         a:hover {
-            color: #4CAF50;
+            text-decoration: underline;
+        }
+
+        img {
+            width: 100%;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+
+        /* Footer Navbar */
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .footer img {
+            width: 24px;
+            height: 24px;
         }
     </style>
 </head>
 
 <body>
-    <div class="registration-container">
+    <div class="container">
+        <h2>Sign Up</h2>
         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <h2>Sign Up</h2>
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email Address" required>
             <input type="tel" name="phone" placeholder="Phone Number" required>
@@ -123,6 +162,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">Create Account</button>
         </form>
         <a href="login.php">Already have an account? Login</a>
+        <img src="https://images.unsplash.com/photo-1468218620578-e8d78dcda7b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZCUyMHN3ZWV0c3xlbnwwfDB8MHx8fDA%3D" alt="Food Illustration">
+    </div>
+
+    <!-- Footer Navbar -->
+    <div class="footer">
+        <img src="../images/house.png" alt="Home">
+        <img src="../images/tray.png" alt="Orders">
+        <img src="../images/cart.png" alt="Cart">
+        <img src="../images/user.png" alt="Profile">
     </div>
 </body>
 

@@ -34,7 +34,6 @@ class Customer
 
 $customer = new Customer();
 $user = $customer->getCustomerByEmail($_SESSION['email']);
-
 ?>
 
 <!DOCTYPE html>
@@ -48,13 +47,8 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
     <style>
         body {
             padding-bottom: 70px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
             font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #8974FF, #FF7BFB);
         }
 
         .profile-container {
@@ -79,10 +73,17 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
             display: block;
             object-fit: cover;
             border: 3px solid #3498db;
+            background-color: #ddd;
+        }
+
+        .profile-picture:hover {
+            cursor: pointer;
+            opacity: 0.9;
         }
 
         .profile-form {
-            display: grid;
+            display: flex;
+            flex-direction: column;
             gap: 15px;
         }
 
@@ -94,30 +95,43 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            color: #333;
         }
 
         .form-group input {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            background-color: #f8f8f8;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #3498db;
         }
 
         .update-btn {
-            background-color: #3498db;
+            background-color: #9fa0f4;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             width: 100%;
+            font-size: 16px;
         }
 
-        .update-btn:hover {
-            background-color: #2980b9;
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            margin-top: 10px;
         }
 
-        /* Add bottom nav styles */
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -150,7 +164,26 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
         }
 
         .nav-item.active {
-            color: #007bff;
+            color: #d63384;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 15px;
+            }
+
+            .update-btn,
+            .logout-btn {
+                padding: 10px;
+            }
+
+            .nav-item i {
+                font-size: 18px;
+            }
+
+            .nav-item span {
+                font-size: 10px;
+            }
         }
     </style>
 </head>
@@ -158,32 +191,37 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
 <body>
     <div class="profile-container">
         <div class="profile-header">
-            <img src="../images/user.png" alt="Profile Picture" class="profile-picture">
+            <label for="profile-picture-input">
+                <img src="../images/user.png" alt="Profile Picture" class="profile-picture" title="Click to upload a new picture">
+            </label>
+            <input type="file" id="profile-picture-input" style="display: none;" aria-label="Upload Profile Picture">
             <h2>Profile Management</h2>
         </div>
 
         <form class="profile-form" method="POST" action="update-profile.php">
             <div class="form-group">
                 <label for="fullname">Full Name</label>
-                <input type="text" id="fullname" name="fullname" value="<?php echo $user["Name"] ?>">
+                <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($user['Name']); ?>" aria-label="Full Name">
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="<?php echo $user["Email"] ?>">
+                <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['Email']); ?>" readonly aria-label="Email">
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" value="<?php echo $user["Phone_Number"] ?>">
+                <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($user['Phone_Number']); ?>" aria-label="Phone Number">
             </div>
 
             <button type="submit" class="update-btn">Update Profile</button>
         </form>
-        <form action="logout.php" method="POST" style="margin-top: 20px;">
-            <button type="submit" class="update-btn" style="background-color: #dc3545;">Logout</button>
+
+        <form action="logout.php" method="POST">
+            <button type="submit" class="update-btn logout-btn">Logout</button>
         </form>
     </div>
+
     <nav class="bottom-nav">
         <div class="nav-items">
             <a href="home.php" class="nav-item">
@@ -198,7 +236,7 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
                 <i class="fas fa-shopping-bag"></i>
                 <span>Cart</span>
             </a>
-            <a href="profile.php" class="nav-item active" style="color: #d63384;">
+            <a href="profile.php" class="nav-item active">
                 <i class="fas fa-user"></i>
                 <span>Profile</span>
             </a>

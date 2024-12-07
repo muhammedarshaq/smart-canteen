@@ -22,8 +22,6 @@ class Foods
         return $this->getFoods($categoryId);
     }
 
-
-    // Get category ID from category name
     private function getCategoryIdByName($name)
     {
         $conn = $this->db->getConnection();
@@ -60,11 +58,10 @@ class Foods
 if (isset($_GET['category'])) {
     $categoryName = $_GET['category'];
 
-    // Get category ID
+    // Get foods by category
     $foods = new Foods();
     $result = $foods->getFoodsByCategoryName($categoryName);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -73,157 +70,145 @@ if (isset($_GET['category'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Canteen - Home</title>
+    <title>Smart Canteen - Foods</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: Arial, sans-serif;
-        }
-
-        body {
-            padding-bottom: 70px;
-            /* Space for bottom nav */
+            background: linear-gradient(to right, #8974FF, #FF7BFB);
         }
 
         .container {
-            max-width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 0 20px;
         }
 
-        .header {
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px 0;
+        .top-bar {
+            background-color: #ffffff;
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
+        .top-bar h1 {
+            margin: 0;
+            padding-left: 10px;
             color: #333;
         }
 
-        .menu-items {
+        .food-list {
+            margin: 20px 0;
+        }
+
+        .food-grid {
             display: flex;
-            gap: 30px;
+            flex-direction: column;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
         }
 
-        .menu-items a {
-            text-decoration: none;
+        .food-card {
+            background: white;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .food-card h3 {
+            margin: 10px 0;
+            font-size: 16px;
             color: #333;
-            font-weight: 500;
         }
 
-        .menu-items a:hover {
+        .food-card p {
             color: #007bff;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
-        .main-content {
-            padding: 40px 0;
+        .food-card button {
+            background-color: #9fa0f4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
         }
+
+        /* .food-card button:hover {
+            background-color: #0056b3;
+        } */
 
         .bottom-nav {
             position: fixed;
             bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #fff;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-            z-index: 1000;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .nav-items {
             display: flex;
             justify-content: space-around;
-            align-items: center;
+            padding: 10px 0;
         }
 
         .nav-item {
+            text-decoration: none;
+            color: #666;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-decoration: none;
-            color: #666;
             font-size: 12px;
         }
 
         .nav-item i {
             font-size: 20px;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
 
         .nav-item.active {
             color: #007bff;
         }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .category-card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .category-icon {
-            font-size: 30px;
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-
-        .category-title {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .category-description {
-            font-size: 12px;
-            color: #666;
-        }
-
-        @media (max-width: 480px) {
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <div class="food-categories">
-        <div class="container">
-            <h2 style="margin: 20px 0;">Foods</h2>
-            <div class="category-grid">
+    <div class="top-bar">
+        <h1>Foods</h1>
+    </div>
+    <div class="container">
+        <div class="food-list">
+            <h2>Available Foods</h2>
+            <div class="food-grid">
                 <?php
                 if (isset($result) && $result) {
-                    echo '<div class="food-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">';
                     while ($food = $result->fetch_assoc()) {
-                        echo '<div class="food-card" style="background: #fff; border-radius: 10px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                            <img src="' . $food['Image'] . '" alt="' . $food['Food_Name'] . '" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
-                            <h3 style="margin: 10px 0;">' . $food['Food_Name'] . '</h3>
-                            <p style="color: #007bff; font-weight: bold;">Rs ' . number_format($food['Price'], 2) . '</p>
-                            <button onclick="addToCart(' . $food['Menu_ID'] . ', \'' . $food['Food_Name'] . '\', ' . $food['Price'] . ')" style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 5px; margin-top: 10px; cursor: pointer;">
-                                Add to Cart
-                            </button>
+                        echo '<div class="food-card">
+                            <img src="' . $food['Image'] . '" alt="' . $food['Food_Name'] . '">
+                            <h3>' . $food['Food_Name'] . '</h3>
+                            <p>Rs ' . number_format($food['Price'], 2) . '</p>
+                            <button onclick="addToCart(' . $food['Menu_ID'] . ', \'' . $food['Food_Name'] . '\', ' . $food['Price'] . ')">Add to Cart</button>
                         </div>';
                     }
-                    echo '</div>';
+                } else {
+                    echo '<p>No foods available for this category.</p>';
                 }
                 ?>
             </div>
@@ -252,7 +237,7 @@ if (isset($_GET['category'])) {
 
     <nav class="bottom-nav">
         <div class="nav-items">
-            <a href="home.php" class="nav-item active">
+            <a href="home.php" class="nav-item">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
@@ -261,7 +246,7 @@ if (isset($_GET['category'])) {
                 <span>Status</span>
             </a>
             <a href="cart.php" class="nav-item">
-                <i class="fas fa-shopping-bag"></i>
+                <i class="fas fa-shopping-cart"></i>
                 <span>Cart</span>
             </a>
             <a href="profile.php" class="nav-item">
@@ -273,4 +258,3 @@ if (isset($_GET['category'])) {
 </body>
 
 </html>
-</div>
