@@ -1,11 +1,6 @@
 <?php
 require_once '../database.php';
 // Check if session exists and redirect if user is already logged in
-session_start();
-if (isset($_SESSION['email'])) {
-    header("Location: home.php");
-    exit();
-}
 
 class CustomerLogin
 {
