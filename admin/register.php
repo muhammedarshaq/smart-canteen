@@ -1,10 +1,5 @@
 <?php
 require_once '../database.php';
-session_start();
-if (isset($_SESSION['email'])) {
-    header('Location: profile.php');
-    exit();
-}
 
 $role = isset($_GET['role']) ? $_GET['role'] : '';
 
@@ -712,8 +707,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="fullName">Full Name </label>
                     <input type="text" id="fullName" name="name" placeholder="Enter your full name" required><br> <br>
 
-                    <label for="employeerole">Employee Role </label>
-                    <input type="text" id="employeerole" name="role" placeholder="Enter your job role (e.g., Manager)" required value="<?php echo htmlspecialchars($role); ?>"> <br> <br>
+                    <input type="hidden" value="<?php echo htmlspecialchars($role); ?>" name="role">
 
                     <label for="email">E-mail Address </label>
                     <input type="email" id="email" name="email" placeholder="Enter your email address" required>

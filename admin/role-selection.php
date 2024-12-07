@@ -132,7 +132,7 @@ session_start();
         }
 
         .content {
-            max-width: 20%;
+            max-width: 70%;
             /* Control width */
             background-color: none;
             padding: 30px;
@@ -365,7 +365,7 @@ session_start();
             }
 
             .content {
-                max-width: 90%;
+                max-width: 70%;
                 margin: 20px auto;
             }
 
@@ -458,25 +458,25 @@ session_start();
     </div>
     <div class="title-bar">
         <h1>Select Your Role</h1>
-    </div>
-    <div class="container">
-        <div class="role-cards">
-            <a href="register.php?role=admin">
-                <div class="role-card">
-                    <div class="role-icon">👨‍💼</div>
-                    <div class="role-title">Admin</div>
-                    <div class="role-description">Manage system and users</div>
-                </div>
-            </a>
-            <a href="register.php?role=staff">
-                <div class="role-card">
-                    <div class="role-icon">👨‍🍳</div>
-                    <div class="role-title">Staff</div>
-                    <div class="role-description">Handle orders and kitchen</div>
-                </div>
-            </a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Order">
+            <button>🔍</button>
         </div>
     </div>
+    <main class="content">
+
+        <div class="registration">
+            <div class="register-box">
+                <h1>Register</h1>
+                <a href="register.php?role=user"><button class="btn">Register as a user</button></a>
+                <a href="register.php?role=employee"><button class="btn">Register as an employee</button></a>
+                <p>Already have an account? <a href="login.php">LOGIN</a></p>
+            </div>
+            <div class="image-box">
+                <img src="https://via.placeholder.com/400x300" alt="Pasta">
+            </div>
+        </div>
+    </main>
 
     <div id="flex-container" class="div-bar">
         <ul>
@@ -490,5 +490,100 @@ session_start();
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+<style>
+    .content {
+        flex: 1;
+        background: linear-gradient(45deg, #f3e9ff, #ffdce5);
+        padding: 20px;
+    }
+
+    .search-bar {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .search-bar input {
+        padding: 5px;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .search-bar button {
+        padding: 5px;
+        background: #db72db;
+        color: white;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+
+    /* Registration Section */
+    .registration {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .register-box {
+        width: 45%;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .register-box h1 {
+        font-size: 2em;
+        color: #6e4dd6;
+        margin-bottom: 20px;
+    }
+
+    .register-box .btn {
+        display: block;
+        width: 80%;
+        margin: 10px auto;
+        padding: 10px;
+        background: #db72db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1em;
+    }
+
+    .register-box .btn:hover {
+        background: #c05cbc;
+    }
+
+    .register-box p {
+        margin-top: 20px;
+    }
+
+    .register-box a {
+        color: #6e4dd6;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .register-box a:hover {
+        text-decoration: underline;
+    }
+
+    .image-box {
+        width: 45%;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .image-box img {
+        width: 100%;
+        height: 500px;
+        display: block;
+    }
+</style>
 
 </html>
