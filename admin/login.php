@@ -711,7 +711,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </form>
             <div class="register-link">
-                <p>Don't have an account? <a href="../admin/register.php" style="color: purple;">Register</a></p>
+                <p>Don't have an account? <a href="../admin/role-selection.php" style="color: purple;">Register</a></p>
             </div>
         </div>
     </div>
