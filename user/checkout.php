@@ -8,11 +8,6 @@ if (!isset($_SESSION['cart']) || !is_array($_SESSION['cart']) || empty($_SESSION
     header("Location: cart.php");
     exit();
 }
-// Ensure that the session cart is initialized and has items
-if (!isset($_SESSION['email']) || empty($_SESSION['cart'])) {
-    header("Location: cart.php");
-    exit();
-}
 
 $db = new Database();
 $conn = $db->getConnection();

@@ -2,13 +2,6 @@
 session_start();
 require_once '../database.php';
 
-
-if (!isset($_SESSION['email'])) {
-    header("Location: login.php");
-    exit();
-}
-
-
 class OrderStatus
 {
     private $db;

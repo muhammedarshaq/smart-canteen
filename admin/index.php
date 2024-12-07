@@ -322,7 +322,7 @@
 
         .login-button {
             padding: 10px 20px;
-            background-color: rgb(5, 198, 44);
+            background-color: red;
             color: #100404;
             border: 2px #097524;
             border-radius: 5px;

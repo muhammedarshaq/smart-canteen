@@ -1,10 +1,6 @@
 <?php
 require_once '../database.php';
 session_start();
-if (isset($_SESSION['email'])) {
-    header("Location: home.php");
-    exit();
-}
 class CustomerRegistration
 {
     private $db;
