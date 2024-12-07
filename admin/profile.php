@@ -147,18 +147,30 @@
             <div class="circle-blue2"></div>
         </div>
         <div class="main-content">
-            <div class="profile-form">
-                <h2>Profile Settings</h2>
-                <form action="update-profile.php" method="POST">
+            <div class="profile-container">
+                <div class="profile-header">
+                    <label for="profile-picture-input">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8MHwwfHx8MA%3D%3D" alt="Profile Picture" class="profile-picture" title="Click to upload a new picture">
+                    </label>
+                    <input type="file" id="profile-picture-input" style="display: none;" aria-label="Upload Profile Picture">
+                    <h2>Profile Management</h2>
+                </div>
+
+                <form class="profile-form" method="POST" action="update-profile.php">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" value="<?php echo $user["Name"] ?>" required>
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($user['Name']); ?>" aria-label="Full Name">
                     </div>
+
                     <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone" value="<?php echo $user["Phone Number"] ?>" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['Email']); ?>" readonly aria-label="Email">
                     </div>
-                    <button type="submit" class="btn-update">Update Profile</button>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($user['Phone Number']); ?>" aria-label="Phone Number">
+                    </div>
                 </form>
             </div>
         </div>
@@ -230,6 +242,88 @@
         filter: blur(70px);
         opacity: 0.8;
         animation: float 10s infinite ease-in-out;
+    }
+
+    .profile-container {
+        width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 75px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: block;
+        object-fit: cover;
+        border: 3px solid #3498db;
+        background-color: #ddd;
+    }
+
+    .profile-picture:hover {
+        cursor: pointer;
+        opacity: 0.9;
+    }
+
+    .profile-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-group input {
+        width: 90%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #3498db;
+    }
+
+    .update-btn {
+        background-color: #9fa0f4;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 90%;
+        font-size: 16px;
+    }
+
+    .logout-btn {
+        background-color: #dc3545;
+        color: white;
+        margin-top: 10px;
+    }
+
+    .logout-btn:hover {
+        background-color: #c82333;
     }
 </style>
 
