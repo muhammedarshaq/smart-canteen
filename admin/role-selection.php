@@ -473,7 +473,7 @@ session_start();
                 <p>Already have an account? <a href="login.php">LOGIN</a></p>
             </div>
             <div class="image-box">
-                <img src="https://via.placeholder.com/400x300" alt="Pasta">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emF8ZW58MHwwfDB8fHww" alt="Pasta">
             </div>
         </div>
     </main>
@@ -583,6 +583,7 @@ session_start();
         width: 100%;
         height: 500px;
         display: block;
+        object-fit: cover;
     }
 </style>
 

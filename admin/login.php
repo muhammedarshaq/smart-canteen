@@ -55,126 +55,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Login</title>
     <style>
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            z-index: -1;
-        }
-
         body {
             font-family: Arial, sans-serif;
-        }
-
-        /* Pink Circle */
-        .circle-pink {
-            position: absolute;
-            top: -80px;
-            left: -100px;
-            width: 600px;
-            height: 600px;
-            background-color: #8974ff;
-            border-radius: 70%;
-            filter: blur(50px);
-            opacity: 0.8;
-        }
-
-        /* Blue Circle */
-        .circle-blue {
-            position: absolute;
-            bottom: -200px;
-            right: -200px;
-            width: 600px;
-            height: 600px;
-            background-color: #8974ff;
-            border-radius: 60%;
-            filter: blur(70px);
-            opacity: 0.8;
-        }
-
-        /* Pink Circle */
-        .circle-pink2 {
-            position: absolute;
-            top: -150px;
-            right: 300px;
-            width: 600px;
-            height: 600px;
-            background-color: #ff7bfb;
-            border-radius: 90%;
-            filter: blur(50px);
-            opacity: 0.8;
-        }
-
-        /* Blue Circle */
-        .circle-blue2 {
-            position: absolute;
-            bottom: -350px;
-            left: 280px;
-            width: 600px;
-            height: 600px;
-            background-color: #ff7bfb;
-            border-radius: 60%;
-            filter: blur(70px);
-            opacity: 0.8;
-        }
-
-        .title-bar {
-            background-color: rgb(255, 255, 255);
-            /* White with slight transparency */
-            width: 100%;
-            height: 13%;
-            padding: 30;
-            position: fixed;
-            /* Position it on top of the background */
-            top: 0;
-            left: 0;
-            z-index: 1;
-            /* Fix it to the top of the container */
-            box-shadow: 0 4px 8px rgba(113, 113, 113, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .image-bar {
-            background-color: rgb(255, 255, 255);
-            /* White with slight transparency */
-            width: 100%;
-            height: 13%;
-            padding: 30;
-            position: fixed;
-            /* Position it on top of the background */
-            top: 20%;
-            left: 70%;
-            z-index: 1;
-            /* Fix it to the top of the container */
-            box-shadow: 0 4px 8px rgba(113, 113, 113, 0.2);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .footer-bar {
-            background-color: rgba(255,
-                    255,
-                    255,
-                    0.427);
-            /* White with slight transparency */
-            width: 100%;
-            height: 15%;
-            padding: 30;
-            position: fixed;
-            /* Position it on top of the background */
-            top: 13.5%;
-            left: 300;
-            z-index: -1;
-            /* Fix it to the top of the container */
-            box-shadow: 0 4px 8px rgba(113, 113, 113, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1702742322469-36315505728f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZGVzc2VydHN8ZW58MHx8MHx8fDA%3D');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         h1 {
@@ -244,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: rgb(255, 255, 255);
             /* White with slight transparency */
             width: 5%;
-            height: 87%;
+            height: 100%;
             padding-right: 13px;
             margin-bottom: 0;
             position: fixed;
@@ -479,7 +365,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .content {
-            max-width: 50%;
+            max-width: 40%;
             /* Control width */
             background-color: rgba(255,
                     255,
@@ -519,7 +405,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Label Styling */
         label {
-            display: block;
+            /* display: block; */
             margin-bottom: 5px;
             padding-left: 35px;
             font-size: 1rem;
@@ -647,39 +533,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: #eaf4ff;
             outline: none;
         }
-
-        .form-image {
-            flex: 1;
-        }
-
-        .form-image img {
-            max-width: 20%;
-            /* Control width */
-            background-color: rgba(255,
-                    255,
-                    255,
-                    0.8);
-            /* White background with slight transparency */
-            padding: 20px;
-            margin: 50px auto;
-            /* Center the box horizontally */
-            /* Rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            /* Shadow for depth */
-            position: relative;
-            top: 100px;
-        }
     </style>
 
 </head>
 
 <body>
-    <div class="background">
-        <div class="circle-pink"></div>
-        <div class="circle-blue"></div>
-        <div class="circle-pink2"></div>
-        <div class="circle-blue2"></div>
-    </div>
 
     <div id="flex-container" class="div-bar">
         <ul>
