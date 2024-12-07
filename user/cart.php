@@ -71,6 +71,7 @@ class Food
     <style>
         body {
             padding-bottom: 70px;
+            background: linear-gradient(to right, #8974FF, #FF7BFB);
             /* Add this */
         }
 

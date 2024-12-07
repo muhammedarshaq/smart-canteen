@@ -168,7 +168,7 @@
     </div>
 
     <div class="content">
-        <img src="icons/Home.png" alt="Home">
+        <img src="../images/chefimage.png" alt="Home">
         <div class="centered-text">
             Bringing You Convenient & Delicious<br>
             Meals at Your Fingertips
@@ -176,7 +176,7 @@
     </div>
 
     <button class="swap-button"
-        onclick="window.location.href=' User_Login.php';"
+        onclick="window.location.href='role_select.php';"
         onmouseover="this.style.backgroundColor='#ff4d4d'"
         onmouseout="this.style.backgroundColor='red'">
         Get Start

@@ -42,8 +42,9 @@ class Categories
         return $name;
     }
 }
-$t = new Categories();
-$name = $t->getUsername($_SESSION['email']);
+
+$categories = new Categories();
+$name = $categories->getUsername($_SESSION['email']);
 ?>
 
 <!DOCTYPE html>
@@ -59,90 +60,116 @@ $name = $t->getUsername($_SESSION['email']);
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
-
-        .container {
-            padding: 0 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            background: linear-gradient(to right, #8974FF, #FF7BFB);
         }
 
         .top-bar {
             background-color: #ffffff;
-            padding: 10px 0;
+            padding: 10px 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .top-bar h1 {
             margin: 0;
-            padding-left: 10px;
             color: #333;
+            font-size: 1.5em;
         }
 
-        .search-and-greeting {
-            background-color: #ffffff;
-            padding: 20px 0;
+        .greeting-container {
+            background: linear-gradient(145deg, #e0d6ff, #f0f4ff);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px auto;
+            max-width: 90%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .greeting-container h2 {
+            margin: 0 0 10px;
+            color: #d63384;
+            font-size: 1.8rem;
+            font-weight: bold;
         }
 
         .search-bar {
             display: flex;
-            gap: 10px;
-            margin-top: 15px;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 8px 12px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .search-bar input {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            padding: 6px 10px;
             font-size: 16px;
+            background: transparent;
         }
 
-        .search-bar button {
-            padding: 12px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+        .search-bar i {
+            color: #999;
+            font-size: 1.2em;
+            margin-right: 10px;
         }
 
         .food-categories {
-            padding: 20px 0;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+
+        .food-categories h2 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.6rem;
+            font-weight: bold;
         }
 
         .category-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
         }
 
         .category-card {
-            background: white;
-            border-radius: 8px;
-            padding: 10px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             text-decoration: none;
             color: #333;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.2s;
+            padding: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .category-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
         }
 
-        .category-title {
-            margin: 10px 0;
+        .category-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .category-card .category-title {
             text-align: center;
-            font-size: 16px;
+            margin: 10px 0 0;
+            font-size: 1rem;
         }
 
         .bottom-nav {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background: white;
+            background: #fff;
             box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -167,163 +194,48 @@ $name = $t->getUsername($_SESSION['email']);
         }
 
         .nav-item.active {
-            color: #007bff;
-        }
-
-        .greeting-container {
-            max-width: 400px;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 12px;
-            background: linear-gradient(145deg, #e0d6ff, #f0f4ff);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-align: left;
-        }
-
-        h2 {
-            margin: 0 0 10px;
             color: #d63384;
-            /* Pink color for the text */
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-
-        .search-bar {
-            display: flex;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            padding: 8px 12px;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar input {
-            flex-grow: 1;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 6px;
-            background: transparent;
-            margin: 0 8px;
-            color: #333;
-        }
-
-        .search-bar .search-icon,
-        .search-bar .mic-icon {
-            font-size: 18px;
-            color: #666;
-        }
-
-        .search-bar .mic-icon {
-            cursor: pointer;
-        }
-
-        /* Adjust font size and layout for smaller devices */
-        @media screen and (max-width: 480px) {
-            .greeting-container {
-                padding: 15px;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .search-bar {
-                display: flex;
-                padding: 6px 10px;
-            }
-
-            .search-bar input {
-                font-size: 14px;
-            }
-
-            .search-bar .search-icon,
-            .search-bar .mic-icon {
-                font-size: 16px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .container {
-                padding: 0 10px;
-            }
-
-            .search-bar {
-                flex-direction: column;
-            }
-
-            .search-bar input,
-            .search-bar button {
-                width: 100%;
-            }
-
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .top-bar h1 {
-                font-size: 1.5em;
-            }
-
-            .nav-items {
-                padding: 5px 0;
-            }
-
-            .nav-item {
-                font-size: 10px;
-            }
-
-            .nav-item i {
-                font-size: 16px;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
 
 <body>
     <div class="top-bar">
-        <h1>Home</h1>
+        <h1>Smart Canteen</h1>
     </div>
+
     <div class="greeting-container">
-        <h2>Hi <?php echo $name ?>,</h2>
+        <h2>Hello, <?php echo $name; ?>!</h2>
         <div class="search-bar">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search" />
+            <input type="text" placeholder="Search for food or categories" />
         </div>
     </div>
+
     <div class="food-categories">
         <div class="container">
-            <h2 style="margin: 20px 0;">Food Categories</h2>
+            <h2 style="color: #ddd;">Food Categories</h2>
             <div class="category-grid">
                 <?php
-                $categories = new Categories();
                 $result = $categories->getCategories();
-
                 if ($result) {
                     while ($row = $result->fetch_assoc()) {
                         echo '<a href="food.php?category=' . strtolower($row['Category_Name']) . '" class="category-card">
-                                <img src="' . strtolower($row['Image']) . '" alt="' . $row['Category_Name'] . '" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
+                                <img src="' . strtolower($row['Image']) . '" alt="' . $row['Category_Name'] . '">
                                 <h3 class="category-title">' . $row['Category_Name'] . '</h3>
-                            </a>';
+                              </a>';
                     }
+                } else {
+                    echo '<p>No categories available at the moment.</p>';
                 }
                 ?>
-
             </div>
         </div>
     </div>
 
     <nav class="bottom-nav">
         <div class="nav-items">
-            <a href="home.php" class="nav-item active" style="color: #d63384;">
+            <a href="home.php" class="nav-item active">
                 <i class="fas fa-home"></i>
                 <span>Home</span>
             </a>
@@ -344,4 +256,3 @@ $name = $t->getUsername($_SESSION['email']);
 </body>
 
 </html>
-</div>

@@ -96,7 +96,7 @@ $order_result = $orderStatus->getOrderByEmail($_SESSION['email']);
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px 20px 70px;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #8974FF, #FF7BFB);
             min-height: 100vh;
         }
 
@@ -130,7 +130,7 @@ $order_result = $orderStatus->getOrderByEmail($_SESSION['email']);
         }
 
         .status-value {
-            color: #666666;
+            color: #008000;
         }
 
         .status-pending {
@@ -229,7 +229,7 @@ $order_result = $orderStatus->getOrderByEmail($_SESSION['email']);
 
         .step-label {
             font-weight: 600;
-            color: #666666;
+            color: #ffffff;
             font-size: 14px;
         }
     </style>
