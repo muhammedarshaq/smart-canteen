@@ -25,7 +25,7 @@ class OrderStatus
         $customer_id = $user['ID'];
 
         $sql = "SELECT * FROM order_status WHERE Customer_ID = ?";
-        $sql .= " ORDER BY Customer_ID DESC LIMIT 1";
+        $sql .= " ORDER BY updated_at DESC LIMIT 1";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("i", $customer_id);
         $stmt->execute();
