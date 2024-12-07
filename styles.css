@@ -1,0 +1,318 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.registration-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+input,
+textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.menu-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.menu-item h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.menu-item button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item button:hover {
+  background-color: #1976d2;
+}
+
+/* User Registration Screen */
+.user-registration-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.user-registration-container form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 300px;
+}
+
+.user-registration-container input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.user-registration-container button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.user-registration-container button:hover {
+  background-color: #45a049;
+}
+
+/* Buy Your Order Screen */
+.buy-order-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.order-details {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.item-container img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.item-name,
+.item-quantity,
+.item-price {
+  margin-right: 10px;
+}
+
+.buy-now-btn {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background-color: #1976d2;
+}
+
+/* Cart Screen */
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: #f4f4f4;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 600px;
+}
+
+.item-container img {
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+}
+
+.item-name,
+.item-price {
+  margin-right: 10px;
+}
+
+/* Home Screen */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.home-container header {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.home-container header input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.categories-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 30px;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.category-item img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+/* Preparing Status Screen */
+.preparing-status-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.order-details {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.order-details input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.order-status-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.status-indicator {
+  position: relative;
+  padding-top: 30px;
+}
+
+.status-indicator:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.status-indicator.accepted:before {
+  background-color: #4caf50;
+}
+
+.status-indicator.preparing:before {
+  background-color: #ffc107;
+}
+
+.status-indicator.ready:before {
+  background-color: #2196f3;
+}
+
+.status-indicator.completed:before {
+  background-color: #4caf50;
+}

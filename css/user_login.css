@@ -1,0 +1,86 @@
+.registration-container {
+  max-width: 400px;
+  width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: clamp(14px, 4vw, 16px);
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 12px;
+  font-size: clamp(14px, 4vw, 16px);
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #45a049;
+}
+
+a {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #666;
+  text-decoration: none;
+  font-size: clamp(14px, 4vw, 16px);
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #4caf50;
+}
+
+/* Additional Media Queries for Smaller Screens */
+@media screen and (max-width: 375px) {
+  .registration-container {
+    margin: 20px auto;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  a {
+    font-size: 14px;
+    margin-top: 15px;
+  }
+}
