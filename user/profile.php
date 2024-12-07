@@ -52,10 +52,11 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
         }
 
         .profile-container {
-            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
@@ -99,7 +100,7 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
         }
 
         .form-group input {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -118,7 +119,7 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
+            width: 90%;
             font-size: 16px;
         }
 
@@ -192,7 +193,7 @@ $user = $customer->getCustomerByEmail($_SESSION['email']);
     <div class="profile-container">
         <div class="profile-header">
             <label for="profile-picture-input">
-                <img src="../images/user.png" alt="Profile Picture" class="profile-picture" title="Click to upload a new picture">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8MHwwfHx8MA%3D%3D" alt="Profile Picture" class="profile-picture" title="Click to upload a new picture">
             </label>
             <input type="file" id="profile-picture-input" style="display: none;" aria-label="Upload Profile Picture">
             <h2>Profile Management</h2>

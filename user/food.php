@@ -110,12 +110,14 @@ if (isset($_GET['category'])) {
         }
 
         .food-card {
-            background: white;
+            background: #c7bbfc;
             border-radius: 8px;
             padding: 10px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s;
+            display: flex;
+            gap: 20px;
         }
 
         .food-card:hover {
@@ -123,7 +125,7 @@ if (isset($_GET['category'])) {
         }
 
         .food-card img {
-            width: 100%;
+            width: 50%;
             height: 120px;
             object-fit: cover;
             border-radius: 8px;
@@ -136,7 +138,7 @@ if (isset($_GET['category'])) {
         }
 
         .food-card p {
-            color: #007bff;
+            color: #000000;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -151,9 +153,9 @@ if (isset($_GET['category'])) {
             font-size: 14px;
         }
 
-        /* .food-card button:hover {
+        .food-card button:hover {
             background-color: #0056b3;
-        } */
+        }
 
         .bottom-nav {
             position: fixed;
@@ -191,20 +193,21 @@ if (isset($_GET['category'])) {
 
 <body>
     <div class="top-bar">
-        <h1>Foods</h1>
+        <h1 style="color: black; text-transform: capitalize;"><?php echo htmlspecialchars($categoryName); ?></h1>
     </div>
     <div class="container">
         <div class="food-list">
-            <h2>Available Foods</h2>
+            <!-- <h2 style="color: white;">Available Foods</h2> -->
+            <h3 style="color: white; text-transform: capitalize;"></h3>
             <div class="food-grid">
                 <?php
                 if (isset($result) && $result) {
                     while ($food = $result->fetch_assoc()) {
                         echo '<div class="food-card">
                             <img src="' . $food['Image'] . '" alt="' . $food['Food_Name'] . '">
-                            <h3>' . $food['Food_Name'] . '</h3>
+                            <div class="det"><h3>' . $food['Food_Name'] . '</h3>
                             <p>Rs ' . number_format($food['Price'], 2) . '</p>
-                            <button onclick="addToCart(' . $food['Menu_ID'] . ', \'' . $food['Food_Name'] . '\', ' . $food['Price'] . ')">Add to Cart</button>
+                            <button onclick="addToCart(' . $food['Menu_ID'] . ', \'' . $food['Food_Name'] . '\', ' . $food['Price'] . ')">Add to Cart</button></div>
                         </div>';
                     }
                 } else {
